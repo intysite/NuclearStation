@@ -13,11 +13,12 @@ public class ReactorDepartment {
         if (isWorking) {
             throw new ReactorWorkException("Реактор уже работает");
         }
-        isWorking = !isWorking;
         startsCount++;
-        if(startsCount % 100 == 0) {
+        if(startsCount == 100) {
+            startsCount = 0;
             throw new NuclearFuelIsEmptyException("Топливо закончилось");
         }
+        isWorking = !isWorking;
         return 10_000_000L;
     }
 
