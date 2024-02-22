@@ -15,7 +15,6 @@ public class NuclearStation {
     private final SecurityDepartment securityDepartment;
 
     @Lazy
-    @Autowired
     public NuclearStation(ReactorDepartment reactorDepartment, SecurityDepartment securityDepartment) {
         this.reactorDepartment = reactorDepartment;
         this.securityDepartment = securityDepartment;
