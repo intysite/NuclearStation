@@ -1,7 +1,7 @@
-package org.javaacademy.exceptions;
+package org.javaacademy;
 
-import org.javaacademy.ReactorDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.IntStream;
@@ -11,10 +11,14 @@ import java.util.stream.LongStream;
 public class NuclearStation {
     private final ReactorDepartment reactorDepartment;
     private long totalAmountOfEnergyGenerated = 0;
+    private int accidentCountAllTime = 0;
+    private final SecurityDepartment securityDepartment;
 
+    @Lazy
     @Autowired
-    public NuclearStation(ReactorDepartment reactorDepartment) {
+    public NuclearStation(ReactorDepartment reactorDepartment, SecurityDepartment securityDepartment) {
         this.reactorDepartment = reactorDepartment;
+        this.securityDepartment = securityDepartment;
     }
 
     public void startYear() {
@@ -32,12 +36,17 @@ public class NuclearStation {
                     }
                 })
                 .sum();
+        securityDepartment.reset();
         System.out.printf("Атомная станция закончила работу. За год выработано %d киловатт/часов\n", sum);
     }
 
     public void start(int year) {
         IntStream.range(0, year)
                 .forEach(i -> this.startYear());
+    }
+
+    public void incrementAccident(int count) {
+        accidentCountAllTime += count;
     }
 
     public long getTotalAmountOfEnergyGenerated() {
