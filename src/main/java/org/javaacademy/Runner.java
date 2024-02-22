@@ -10,6 +10,5 @@ public class Runner {
         NuclearStation nuclearStation = (NuclearStation) context.getBean("nuclearStation");
         nuclearStation.start(3);
         System.out.println(nuclearStation.getTotalAmountOfEnergyGenerated());
-        System.out.println();
     }
 }

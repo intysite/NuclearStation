@@ -35,13 +35,17 @@ public class NuclearStation {
                     }
                 })
                 .sum();
-        securityDepartment.reset();
         System.out.printf("Атомная станция закончила работу. За год выработано %d киловатт/часов\n", sum);
+        System.out.printf("Количество инцидентов за год: %d\n", securityDepartment.getCountAccidents());
+        securityDepartment.reset();
     }
 
     public void start(int year) {
         IntStream.range(0, year)
-                .forEach(i -> this.startYear());
+                .forEach(i -> {
+                    this.startYear();
+                    System.out.printf("Количество инцидентов за всю работу станции: %d\n", accidentCountAllTime);
+                });
     }
 
     public void incrementAccident(int count) {
