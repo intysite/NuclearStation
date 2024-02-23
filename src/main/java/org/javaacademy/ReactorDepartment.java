@@ -21,7 +21,7 @@ public class ReactorDepartment {
             throw new ReactorWorkException("Реактор уже работает");
         }
         startsCount++;
-        if(startsCount == 100) {
+        if (startsCount == 100) {
             startsCount = 0;
             securityDepartment.addAccident();
             throw new NuclearFuelIsEmptyException("Топливо закончилось");
