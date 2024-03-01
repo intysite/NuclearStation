@@ -1,5 +1,6 @@
 package org.javaacademy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class NuclearStation {
     private int accidentCountAllTime = 0;
     private final SecurityDepartment securityDepartment;
 
-    @Lazy
+    @Autowired
     public NuclearStation(ReactorDepartment reactorDepartment, SecurityDepartment securityDepartment) {
         this.reactorDepartment = reactorDepartment;
         this.securityDepartment = securityDepartment;

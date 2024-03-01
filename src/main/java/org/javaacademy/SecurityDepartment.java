@@ -10,7 +10,7 @@ public class SecurityDepartment {
     private int accidentCountPeriod = 0;
     private final NuclearStation nuclearStation;
 
-    @Autowired
+    @Lazy
     public SecurityDepartment(NuclearStation nuclearStation) {
         this.nuclearStation = nuclearStation;
     }
