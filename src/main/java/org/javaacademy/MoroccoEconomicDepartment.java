@@ -13,8 +13,8 @@ public class MoroccoEconomicDepartment extends EconomicDepartment {
         BigDecimal baseRate = BigDecimal.valueOf(5);
         BigDecimal increasedRate = BigDecimal.valueOf(6);
         long fiveBillion = 5_000_000_000L;
-
         BigDecimal income;
+
         if (countElectricity <= fiveBillion) {
             income = baseRate.multiply(BigDecimal.valueOf(countElectricity));
         } else {

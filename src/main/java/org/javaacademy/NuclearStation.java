@@ -1,7 +1,6 @@
 package org.javaacademy;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.IntStream;
@@ -13,11 +12,16 @@ public class NuclearStation {
     private long totalAmountOfEnergyGenerated = 0;
     private int accidentCountAllTime = 0;
     private final SecurityDepartment securityDepartment;
+    private final EconomicDepartment economicDepartment;
+    private final CountryInfo countryInfo;
 
     @Autowired
-    public NuclearStation(ReactorDepartment reactorDepartment, SecurityDepartment securityDepartment) {
+    public NuclearStation(ReactorDepartment reactorDepartment, SecurityDepartment securityDepartment,
+                          EconomicDepartment economicDepartment, CountryInfo countryInfo) {
         this.reactorDepartment = reactorDepartment;
         this.securityDepartment = securityDepartment;
+        this.economicDepartment = economicDepartment;
+        this.countryInfo = countryInfo;
     }
 
     public void startYear() {
@@ -36,11 +40,14 @@ public class NuclearStation {
                 })
                 .sum();
         System.out.printf("Атомная станция закончила работу. За год выработано %d киловатт/часов\n", sum);
+        System.out.printf("Доход за год составил %s %s\n",
+                String.format("%.2f", economicDepartment.computeYearIncomes(sum)), countryInfo.getCurrencyName());
         System.out.printf("Количество инцидентов за год: %d\n", securityDepartment.getCountAccidents());
         securityDepartment.reset();
     }
 
     public void start(int year) {
+        System.out.printf("Действие происходит в стране: %s\n", countryInfo.getCountryName());
         IntStream.range(0, year)
                 .forEach(i -> {
                     this.startYear();
