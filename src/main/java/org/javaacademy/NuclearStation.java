@@ -2,7 +2,6 @@ package org.javaacademy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
