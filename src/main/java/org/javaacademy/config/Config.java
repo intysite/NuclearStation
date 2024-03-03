@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @ComponentScan("org.javaacademy")
-
 public class Config {
     @Bean
     @Profile("france")
